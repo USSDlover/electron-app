@@ -7,6 +7,9 @@ import { VitePlugin } from '@electron-forge/plugin-vite';
 import { FusesPlugin } from '@electron-forge/plugin-fuses';
 import { FuseV1Options, FuseVersion } from '@electron/fuses';
 
+// TODO Publish to GitHub
+//  - https://www.electronforge.io/
+//  - https://www.electronforge.io/config/publishers/github
 const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
@@ -53,6 +56,18 @@ const config: ForgeConfig = {
       [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
+  ],
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'me',
+          name: 'awesome-thing',
+        },
+        prerelease: true,
+      },
+    }
   ],
 };
 
